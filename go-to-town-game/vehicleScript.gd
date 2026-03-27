@@ -20,12 +20,15 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
+		
 		if velocity.x <= MAX_SPEED or velocity.x >= MAX_SPEED * -1:
 			velocity.x += direction * SPEED
-		
+					
+		#Aqui é pra caso fique acima do máximo indo de frente ou de trás ele travar
 		if velocity.x > MAX_SPEED or velocity.x < MAX_SPEED * -1:
 			velocity.x = MAX_SPEED if velocity.x > 0 else MAX_SPEED * -1
 	else:
 		velocity.x = move_toward(velocity.x, 0, FRICTION)
+		
 
 	move_and_slide()

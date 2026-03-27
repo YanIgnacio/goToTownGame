@@ -27,40 +27,44 @@ visible = false
 position = Vector2(46, 494)
 shape = SubResource("RectangleShape2D_61od6")
 
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=2140038868]
+position = Vector2(352, 314)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=689829877]
+position = Vector2(573, 597)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1157932171]
-position = Vector2(576.75, 591.75)
+position = Vector2(0, -4.999939)
 scale = Vector2(1.1739795, 0.11377552)
 texture = ExtResource("2_g4qto")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=876305044]
-visible = false
-position = Vector2(575.25, 593.23126)
+position = Vector2(2, -7)
 shape = SubResource("RectangleShape2D_hr5et")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1604266710]
+position = Vector2(1719, 590)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1656804217]
-position = Vector2(1727, 590)
+position = Vector2(1, 6.1035156e-05)
 scale = Vector2(1.1739795, 0.11377552)
 texture = ExtResource("2_g4qto")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=59003184]
-visible = false
-position = Vector2(575.25, 593.23126)
+position = Vector2(-1, 3)
 shape = SubResource("RectangleShape2D_hr5et")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=894012985]
+position = Vector2(-51, 66)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=1904055943]
-position = Vector2(-57.24997, 70.24994)
+position = Vector2(-5.000004, 5)
 rotation = 1.5707964
 scale = Vector2(1.1739795, 0.11377552)
 texture = ExtResource("2_g4qto")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=2031709421]
-position = Vector2(-58.75, 71.73126)
+position = Vector2(-4, 2)
 rotation = 1.5707964
 scale = Vector2(1, 0.99999994)
 shape = SubResource("RectangleShape2D_hr5et")
