@@ -8,9 +8,6 @@
 size = Vector2(637.5001, 53.333332)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_50v30"]
-friction = 2.0
-rough = true
-bounce = 0.1
 absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mrxu"]
@@ -19,7 +16,6 @@ radius = 9.333334
 [node name="Node2D" type="Node2D" unique_id=1410308043]
 
 [node name="car" type="RigidBody2D" parent="." unique_id=1811045782]
-mass = 0.2
 script = ExtResource("1_50v30")
 
 [node name="Sprite2D" type="Sprite2D" parent="car" unique_id=1670911067]
@@ -32,14 +28,17 @@ scale = Vector2(0.16, 0.6)
 shape = SubResource("RectangleShape2D_jtldb")
 
 [node name="frontWheelPin" type="PinJoint2D" parent="car" unique_id=1654218986]
-position = Vector2(45, 16)
+position = Vector2(46, 20)
 node_a = NodePath("..")
 node_b = NodePath("frontWheel")
+bias = 0.5
+softness = 1.5
 motor_enabled = true
 
 [node name="frontWheel" type="RigidBody2D" parent="car/frontWheelPin" unique_id=587297284]
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_50v30")
+gravity_scale = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="car/frontWheelPin/frontWheel" unique_id=163323550]
 scale = Vector2(0.06, 0.06)
@@ -49,15 +48,21 @@ texture = ExtResource("3_50v30")
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_3mrxu")
 
+[node name="RayCast2D" type="RayCast2D" parent="car/frontWheelPin" unique_id=1252286470]
+target_position = Vector2(0, 20)
+
 [node name="backWheelPin" type="PinJoint2D" parent="car" unique_id=453226020]
-position = Vector2(-47, 15)
+position = Vector2(-46, 19)
 node_a = NodePath("backWheel")
 node_b = NodePath("..")
+bias = 0.5
+softness = 1.5
 motor_enabled = true
 
 [node name="backWheel" type="RigidBody2D" parent="car/backWheelPin" unique_id=267259955]
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_50v30")
+gravity_scale = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="car/backWheelPin/backWheel" unique_id=489488407]
 scale = Vector2(0.06, 0.06)
@@ -67,4 +72,10 @@ texture = ExtResource("3_50v30")
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_3mrxu")
 
+[node name="RayCast2D" type="RayCast2D" parent="car/backWheelPin" unique_id=921067281]
+target_position = Vector2(0, 20)
+
 [node name="Camera2D" type="Camera2D" parent="car" unique_id=199159770]
+zoom = Vector2(2, 2)
+drag_horizontal_offset = 1.0
+drag_vertical_offset = -0.8
