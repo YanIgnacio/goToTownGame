@@ -13,7 +13,7 @@ size = Vector2(637.5001, 63.333332)
 [node name="Node2D" type="Node2D" unique_id=1410308043]
 
 [node name="car" type="RigidBody2D" parent="." unique_id=1811045782]
-mass = 0.043
+mass = 0.2
 script = ExtResource("1_50v30")
 
 [node name="Sprite2D" type="Sprite2D" parent="car" unique_id=1670911067]
@@ -26,38 +26,38 @@ shape = SubResource("RectangleShape2D_jtldb")
 
 [node name="Camera2D" type="Camera2D" parent="car" unique_id=199159770]
 
-[node name="backWheel" type="RigidBody2D" parent="car" unique_id=267259955]
-position = Vector2(-47, 14)
+[node name="frontWheelPin" type="PinJoint2D" parent="car" unique_id=1654218986]
+position = Vector2(45, 16)
+node_a = NodePath("..")
+node_b = NodePath("frontWheel")
+motor_enabled = true
+
+[node name="frontWheel" type="RigidBody2D" parent="car/frontWheelPin" unique_id=587297284]
+mass = 0.5
 script = ExtResource("3_jtldb")
 
-[node name="Sprite2D" type="Sprite2D" parent="car/backWheel" unique_id=489488407]
+[node name="Sprite2D" type="Sprite2D" parent="car/frontWheelPin/frontWheel" unique_id=163323550]
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("3_50v30")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="car/backWheel" unique_id=780190578]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car/frontWheelPin/frontWheel" unique_id=1135697355]
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_3mrxu")
 
-[node name="frontWheel" type="RigidBody2D" parent="car" unique_id=587297284]
-position = Vector2(48, 15)
+[node name="backWheelPin" type="PinJoint2D" parent="car" unique_id=453226020]
+position = Vector2(-47, 15)
+node_a = NodePath("backWheel")
+node_b = NodePath("..")
+motor_enabled = true
+
+[node name="backWheel" type="RigidBody2D" parent="car/backWheelPin" unique_id=267259955]
+mass = 0.5
 script = ExtResource("3_jtldb")
 
-[node name="Sprite2D" type="Sprite2D" parent="car/frontWheel" unique_id=163323550]
+[node name="Sprite2D" type="Sprite2D" parent="car/backWheelPin/backWheel" unique_id=489488407]
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("3_50v30")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="car/frontWheel" unique_id=1135697355]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car/backWheelPin/backWheel" unique_id=780190578]
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_3mrxu")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="car" unique_id=1654218986]
-position = Vector2(-47, 14)
-node_a = NodePath("../frontWheel")
-node_b = NodePath("..")
-motor_enabled = true
-
-[node name="PinJoint2D2" type="PinJoint2D" parent="car" unique_id=453226020]
-position = Vector2(48, 15)
-node_a = NodePath("../backWheel")
-node_b = NodePath("..")
-motor_enabled = true
