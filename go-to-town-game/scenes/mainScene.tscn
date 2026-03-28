@@ -10,6 +10,9 @@ size = Vector2(1153.5, 111.537506)
 [node name="Node2D" type="Node2D" unique_id=1113968797]
 script = ExtResource("1_iwpey")
 
+[node name="Car" parent="." unique_id=1804096107 instance=ExtResource("3_hr5et")]
+position = Vector2(460, 328)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=689829877]
 position = Vector2(573, 597)
 
@@ -19,7 +22,6 @@ scale = Vector2(1.1739795, 0.11377552)
 texture = ExtResource("2_g4qto")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=876305044]
-position = Vector2(575.25, 593.23126)
 shape = SubResource("RectangleShape2D_hr5et")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1604266710]
@@ -31,7 +33,7 @@ scale = Vector2(1.1739795, 0.11377552)
 texture = ExtResource("2_g4qto")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=59003184]
-position = Vector2(-1, 3)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_hr5et")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=894012985]
@@ -48,6 +50,3 @@ position = Vector2(-4, 2)
 rotation = 1.5707964
 scale = Vector2(1, 0.99999994)
 shape = SubResource("RectangleShape2D_hr5et")
-
-[node name="Car" parent="." unique_id=1804096107 instance=ExtResource("3_hr5et")]
-position = Vector2(65, 470)

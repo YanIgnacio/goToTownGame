@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
-
 const SPEED = 30.0
 const FRICTION = 10
 const JUMP_VELOCITY = 0
 const MAX_SPEED = 900
+var frontWheel = 0
+var backWheel = 0
 
+func _ready():
+	frontWheel = $pneuDianteiro
+	backWheel = $pneuTraseiro
 
 func _physics_process(delta):
 	# Add the gravity.
