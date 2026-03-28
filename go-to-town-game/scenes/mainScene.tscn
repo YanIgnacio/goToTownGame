@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://cvndseyirxc0w"]
 
-[ext_resource type="Script" uid="uid://cawwge66yjpqa" path="res://scripts/mainScene.gd" id="1_iwpey"]
 [ext_resource type="Texture2D" uid="uid://dg2ycsje5sh02" path="res://sprites/2948768-pixel-minecraft-style-land-background-vetor.jpg" id="2_g4qto"]
 [ext_resource type="PackedScene" uid="uid://bb01os0mni02f" path="res://scenes/car.tscn" id="3_hr5et"]
 
@@ -8,7 +7,6 @@
 size = Vector2(1153.5, 111.537506)
 
 [node name="Node2D" type="Node2D" unique_id=1113968797]
-script = ExtResource("1_iwpey")
 
 [node name="Car" parent="." unique_id=1804096107 instance=ExtResource("3_hr5et")]
 position = Vector2(460, 328)
