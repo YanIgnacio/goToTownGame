@@ -1,19 +1,27 @@
 [gd_scene format=3 uid="uid://cyoch5wdqdaih"]
 
-[ext_resource type="Texture2D" uid="uid://k5ee5r1j5lx7" path="res://sprites/powerup.png" id="1_8vsy1"]
+[ext_resource type="Texture2D" uid="uid://uoybq4k2fqni" path="res://sprites/terrenos100.png" id="1_ih772"]
 [ext_resource type="Script" uid="uid://c63x7p38dsvkq" path="res://scripts/powerupScript.gd" id="2_ih772"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ih772"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_406cw"]
+atlas = ExtResource("1_ih772")
+region = Rect2(143.21707, 0.61155176, 32.644394, 63.1125)
 
-[node name="Node2D" type="Node2D" unique_id=2057787156]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ih772"]
+size = Vector2(26, 31)
+
+[node name="Node2D2" type="Node2D" unique_id=2057787156]
 
 [node name="powerup" type="AnimatableBody2D" parent="." unique_id=838499612]
 
 [node name="Sprite2D" type="Sprite2D" parent="powerup" unique_id=1978320866]
-scale = Vector2(0.016, 0.016)
-texture = ExtResource("1_8vsy1")
+texture_filter = 1
+position = Vector2(-2.3841858e-07, -6.556511e-07)
+scale = Vector2(1, 0.507)
+texture = SubResource("AtlasTexture_406cw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="powerup" unique_id=1335126393]
+scale = Vector2(1, 0.507)
 shape = SubResource("RectangleShape2D_ih772")
 disabled = true
 
@@ -21,6 +29,7 @@ disabled = true
 script = ExtResource("2_ih772")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="powerup/Area2D" unique_id=442615656]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_ih772")
 
 [connection signal="body_entered" from="powerup/Area2D" to="powerup/Area2D" method="_on_body_entered"]

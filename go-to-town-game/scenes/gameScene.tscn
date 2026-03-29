@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0pxognhc6xvw" path="res://scenes/boxes/squareBox.tscn" id="3_0smmp"]
 [ext_resource type="PackedScene" uid="uid://cyoch5wdqdaih" path="res://scenes/powerup.tscn" id="3_ijoxr"]
 [ext_resource type="PackedScene" uid="uid://bp5thjnkncsx8" path="res://scenes/boxes/rectangleBox.tscn" id="4_4doxw"]
-[ext_resource type="Script" path="res://scripts/game_over.gd" id="7_ldpgw"]
+[ext_resource type="Script" uid="uid://cbw4sjb46b6sb" path="res://scripts/game_over.gd" id="7_ldpgw"]
 
 [node name="Game" type="Node2D" unique_id=197020322]
 script = ExtResource("1_ldpgw")
@@ -36,7 +36,7 @@ position = Vector2(274, -85)
 position = Vector2(331, -158)
 
 [node name="Node2D7" parent="." unique_id=2057787156 instance=ExtResource("3_ijoxr")]
-position = Vector2(335, -58)
+position = Vector2(524, -55)
 
 [node name="gameOver" type="CanvasLayer" parent="." unique_id=270687323]
 process_mode = 2
