@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://chwucg6sbt7wp"]
 
-[ext_resource type="Script" path="res://scripts/gameManager.gd" id="1_ldpgw"]
+[ext_resource type="Script" uid="uid://b5y78aq0pc6xc" path="res://scripts/gameManager.gd" id="1_ldpgw"]
 [ext_resource type="PackedScene" uid="uid://bipjfoywcec28" path="res://scenes/terrain.tscn" id="1_qdqca"]
 [ext_resource type="PackedScene" uid="uid://bb01os0mni02f" path="res://scenes/car.tscn" id="2_ijoxr"]
 [ext_resource type="PackedScene" uid="uid://0pxognhc6xvw" path="res://scenes/boxes/squareBox.tscn" id="3_0smmp"]
-[ext_resource type="PackedScene" uid="uid://cyoch5wdqdaih" path="res://scenes/powerup.tscn" id="3_ijoxr"]
 [ext_resource type="PackedScene" uid="uid://bp5thjnkncsx8" path="res://scenes/boxes/rectangleBox.tscn" id="4_4doxw"]
-[ext_resource type="Script" path="res://scripts/game_over.gd" id="7_ldpgw"]
+[ext_resource type="Script" uid="uid://cbw4sjb46b6sb" path="res://scripts/game_over.gd" id="7_ldpgw"]
+[ext_resource type="Texture2D" uid="uid://uoybq4k2fqni" path="res://sprites/terrenos100.png" id="8_gi2u3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi2u3"]
+atlas = ExtResource("8_gi2u3")
+region = Rect2(259, 70, 59, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldpgw"]
+size = Vector2(59.60162, 154.26297)
 
 [node name="Game" type="Node2D" unique_id=197020322]
 script = ExtResource("1_ldpgw")
@@ -15,28 +22,25 @@ script = ExtResource("1_ldpgw")
 position = Vector2(0, -2)
 
 [node name="Carro" parent="." unique_id=1410308043 instance=ExtResource("2_ijoxr")]
-position = Vector2(334, -65)
+position = Vector2(411, -60)
 
 [node name="Node2D" parent="." unique_id=876893026 instance=ExtResource("3_0smmp")]
-position = Vector2(263, -61)
+position = Vector2(340, -56)
 
 [node name="Node2D2" parent="." unique_id=1981726406 instance=ExtResource("3_0smmp")]
-position = Vector2(285, -61)
+position = Vector2(362, -56)
 
 [node name="Node2D3" parent="." unique_id=522574052 instance=ExtResource("3_0smmp")]
-position = Vector2(308, -61)
+position = Vector2(385, -56)
 
 [node name="Node2D4" parent="." unique_id=1431512447 instance=ExtResource("3_0smmp")]
-position = Vector2(332, -61)
+position = Vector2(409, -56)
 
 [node name="Node2D5" parent="." unique_id=1519297380 instance=ExtResource("4_4doxw")]
-position = Vector2(274, -85)
+position = Vector2(355, -76)
 
 [node name="Node2D6" parent="." unique_id=1070718116 instance=ExtResource("4_4doxw")]
-position = Vector2(331, -158)
-
-[node name="Node2D7" parent="." unique_id=2057787156 instance=ExtResource("3_ijoxr")]
-position = Vector2(335, -58)
+position = Vector2(411, -76)
 
 [node name="gameOver" type="CanvasLayer" parent="." unique_id=270687323]
 process_mode = 2
@@ -145,6 +149,29 @@ grow_vertical = 2
 size_flags_vertical = 0
 text = "Main Menu
 "
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=767005006]
+texture_filter = 1
+position = Vector2(115, -100)
+scale = Vector2(4.2916665, 4.291666)
+texture = ExtResource("8_gi2u3")
+region_enabled = true
+region_rect = Rect2(320, 79, 24, 46)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=116613334]
+texture_filter = 1
+position = Vector2(219, -61.25)
+scale = Vector2(2.2818182, 2.2818182)
+texture = SubResource("AtlasTexture_gi2u3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D2" unique_id=595514021]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/StaticBody2D" unique_id=1968264319]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(-1.7529755, -43.715126)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_ldpgw")
 
 [connection signal="pressed" from="gameOver/Button" to="gameOver" method="_on_button_pressed"]
 [connection signal="pressed" from="gameOver/Button2" to="gameOver" method="_on_button_2_pressed"]
