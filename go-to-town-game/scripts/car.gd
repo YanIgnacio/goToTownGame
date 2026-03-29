@@ -3,6 +3,7 @@ extends RigidBody2D
 const TORQUE = 50.0
 const JUMP_VELOCITY = 0
 const MAX_SPEED = 900
+var powerup_array = [stickyTires, bouncyTires, truckLid, truckRockets]
 var speed = 0.0
 var was_on_floor = true
 
@@ -28,7 +29,7 @@ func _process(delta):
 		frontWheel.apply_torque(speed)
 		backWheel.apply_torque(speed)
 	
-	was_on_floor = not (not is_on_floor(frontWheel) and not is_on_floor(backWheel))
+	was_on_floor = not (not is_on_floor(frontWheel) and not is_on_floor(backWheel)) 
 		
 func _physics_process(delta):
 	pass
@@ -36,4 +37,23 @@ func _physics_process(delta):
 func is_on_floor(rigidBody):
 	var rayCast = rigidBody.get_parent().get_node("RayCast2D")
 	return rayCast.is_colliding()
+	
+
+func activatePowerUp():
+	var chosen_powerup = randi_range(0, 3)
+	var powerup = powerup_array[chosen_powerup]
+	print(powerup)
+	pass
+	
+func stickyTires():
+	pass
+	
+func bouncyTires():
+	pass
+	
+func truckLid():
+	pass
+	
+func truckRockets():
+	pass
 	
