@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://bp5thjnkncsx8"]
 
-[ext_resource type="Texture2D" uid="uid://byq1j7w5h8yq6" path="res://sprites/crate.png" id="1_6kgvv"]
+[ext_resource type="Texture2D" uid="uid://uoybq4k2fqni" path="res://sprites/terrenos100.png" id="1_6kgvv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pijs"]
+atlas = ExtResource("1_6kgvv")
+region = Rect2(1471.4764, 63.218296, 257.4088, 129.92221)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pijs"]
 
