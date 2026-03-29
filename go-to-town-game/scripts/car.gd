@@ -48,7 +48,7 @@ func is_on_floor(rigidBody):
 func activatePowerUp():
 	var chosen_powerup = randi_range(0, 3)
 	var powerup = powerup_array[chosen_powerup]
-	powerup.call()
+	truckRockets()
 	timer.start()
 	
 	
@@ -68,6 +68,8 @@ func truckLid():
 	pass
 	
 func truckRockets():
+	var rocket = load("res://scenes/rocket.tscn").instantiate()
+	add_child(rocket)
 	pass
 	
 

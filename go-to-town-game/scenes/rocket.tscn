@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bd22607mdafgn"]
+
+[ext_resource type="Texture2D" uid="uid://856s6onm6wxe" path="res://sprites/5bbc28cc7548f.jpg" id="1_3341w"]
+[ext_resource type="Script" uid="uid://dxtwhj5cel510" path="res://scripts/rocket.gd" id="1_dkv7l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkv7l"]
+
+[node name="Node2D" type="Node2D" unique_id=1474127161]
+
+[node name="Rocket" type="RigidBody2D" parent="." unique_id=839979967]
+script = ExtResource("1_dkv7l")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocket" unique_id=71314432]
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_3341w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket" unique_id=1250717589]
+shape = SubResource("RectangleShape2D_dkv7l")
+disabled = true
