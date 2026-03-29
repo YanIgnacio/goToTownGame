@@ -18,6 +18,8 @@ var truckLidActive = false
 @onready var frontWheel = $frontWheelPin/frontWheel
 @onready var backWheel = $backWheelPin/backWheel
 @onready var rocket = $rocket
+@onready var stickyTiresSprite = $stickyTires
+@onready var bouncyTiresSprite = $bouncyTires
 @onready var lid = $truckLid
 @onready var boxArea = $Area2D
 @onready var gameOverScreen = get_parent().get_parent().get_node("gameOver")
@@ -71,6 +73,7 @@ func activatePowerUp():
 	
 	
 func stickyTires():
+	stickyTiresSprite.visible = true
 	stickyTiresActive = true
 	var downforce = $frontWheelPin/RayCast2D.target_position * 200
 	if not is_on_floor(frontWheel):
@@ -79,6 +82,7 @@ func stickyTires():
 		backWheel.apply_central_force(downforce)
 	
 func bouncyTires():
+	bouncyTiresSprite.visible = true
 	bouncyTiresActive = true
 	var normalVector = Vector2.UP
 	var upforce = 0
@@ -106,6 +110,8 @@ func _on_timer_timeout():
 	truckLidActive = false
 	rocket.visible = false
 	lid.visible = false
+	bouncyTiresSprite.visible = false
+	stickyTiresSprite.visible = false
 	lid.get_node("CollisionShape2D").set_deferred('disabled', true)
 	
 func get_carried_boxes():
