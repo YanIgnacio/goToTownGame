@@ -3,17 +3,19 @@ extends RigidBody2D
 const TORQUE = 50.0
 const JUMP_VELOCITY = 0
 const MAX_SPEED = 900
+const THRUST = 1000
 var powerup_array = [stickyTires, bouncyTires, truckLid, truckRockets]
 var speed = 0.0
 var wasOnFloor = true
 var stickyTiresActive = false
 var bouncyTiresActive = false
 var truckLidActive = false
-var truckRocketsActive = false
 
-@onready var timer = $Timer
+@onready var timer = $timer
 @onready var frontWheel = $frontWheelPin/frontWheel
 @onready var backWheel = $backWheelPin/backWheel
+@onready var rocket = $rocket
+@onready var lid = $truckLid
 
 func _process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -32,6 +34,10 @@ func _process(delta):
 	else:
 		frontWheel.apply_torque(speed)
 		backWheel.apply_torque(speed)
+		
+	if rocket.visible:
+		apply_central_force(Vector2.RIGHT.rotated(rotation) * THRUST)
+
 	
 	wasOnFloor = not (not is_on_floor(frontWheel) and not is_on_floor(backWheel))
 		
@@ -47,7 +53,7 @@ func is_on_floor(rigidBody):
 func activatePowerUp():
 	var chosen_powerup = randi_range(0, 3)
 	var powerup = powerup_array[chosen_powerup]
-	truckRockets()
+	powerup.call()
 	timer.start()
 	
 	
@@ -64,11 +70,12 @@ func bouncyTires():
 	backWheel.physics_material_override.absorbent = false
 	
 func truckLid():
+	lid.visible = true
+	lid.get_node("CollisionShape2D").set_deferred('disabled', false)
 	pass
 	
 func truckRockets():
-	var rocket = load("res://scenes/rocket.tscn").instantiate()
-	add_child(rocket)
+	rocket.visible = true
 	pass
 	
 
@@ -76,4 +83,6 @@ func _on_timer_timeout():
 	stickyTiresActive = false
 	bouncyTiresActive = false
 	truckLidActive = false
-	truckRocketsActive = false
+	rocket.visible = false
+	lid.visible = false
+	lid.get_node("CollisionShape2D").set_deferred('disabled', true)

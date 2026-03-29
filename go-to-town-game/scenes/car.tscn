@@ -3,11 +3,19 @@
 [ext_resource type="Script" uid="uid://8t51v15g0xas" path="res://scripts/car.gd" id="1_50v30"]
 [ext_resource type="Texture2D" uid="uid://dpg6j57x8h38b" path="res://sprites/car.png" id="2_50v30"]
 [ext_resource type="Texture2D" uid="uid://7bqfgi56w4y8" path="res://sprites/tire.png" id="3_50v30"]
+[ext_resource type="Texture2D" uid="uid://byq1j7w5h8yq6" path="res://sprites/crate.png" id="5_3mrxu"]
+[ext_resource type="Texture2D" uid="uid://856s6onm6wxe" path="res://sprites/5bbc28cc7548f.jpg" id="5_cp117"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_50v30"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mrxu"]
 radius = 13.349991
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4clw4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3mrxu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cp117"]
 
 [node name="Node2D" type="Node2D" unique_id=1410308043 groups=["player"]]
 
@@ -80,8 +88,40 @@ zoom = Vector2(2, 2)
 drag_horizontal_offset = 1.0
 drag_vertical_offset = -0.8
 
-[node name="Timer" type="Timer" parent="car" unique_id=832538064]
+[node name="timer" type="Timer" parent="car" unique_id=832538064]
 wait_time = 5.0
 one_shot = true
 
-[connection signal="timeout" from="car/Timer" to="car" method="_on_timer_timeout"]
+[node name="rocket" type="StaticBody2D" parent="car" unique_id=269625102]
+visible = false
+position = Vector2(29, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="car/rocket" unique_id=1807540142]
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_cp117")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car/rocket" unique_id=836786342]
+shape = SubResource("RectangleShape2D_4clw4")
+disabled = true
+
+[node name="truckLid" type="RigidBody2D" parent="car" unique_id=649337291]
+visible = false
+position = Vector2(-32, -25)
+collision_layer = 7
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_3mrxu")
+can_sleep = false
+freeze = true
+freeze_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="car/truckLid" unique_id=342786216]
+scale = Vector2(0.21000123, -0.01)
+texture = ExtResource("5_3mrxu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car/truckLid" unique_id=938711248]
+scale = Vector2(5.5999975, 0.24000034)
+shape = SubResource("RectangleShape2D_cp117")
+disabled = true
+
+[connection signal="timeout" from="car/timer" to="car" method="_on_timer_timeout"]
