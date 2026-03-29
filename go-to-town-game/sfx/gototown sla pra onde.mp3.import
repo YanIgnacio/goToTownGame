@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/gototown sla pra onde.mp3-2e62221b2c4b9952261
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

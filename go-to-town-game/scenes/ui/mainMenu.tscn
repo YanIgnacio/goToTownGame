@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://q62m6xfjds63" path="res://scripts/ui/mainMenu.gd" id="1_ph80j"]
 [ext_resource type="Texture2D" uid="uid://hna1rt274i0b" path="res://sprites/menuTitle.png" id="3_c8enf"]
+[ext_resource type="AudioStream" uid="uid://dfgad45od5tex" path="res://sfx/gototown sla pra onde.mp3" id="4_f0x07"]
 [ext_resource type="Texture2D" uid="uid://uoybq4k2fqni" path="res://sprites/terrenos100.png" id="4_oxtcp"]
 
 [node name="Control" type="Control" unique_id=911159707]
@@ -124,6 +125,10 @@ position = Vector2(18, 20)
 texture = ExtResource("4_oxtcp")
 region_enabled = true
 region_rect = Rect2(786, 268, 36, 39)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=210113286]
+stream = ExtResource("4_f0x07")
+autoplay = true
 
 [connection signal="pressed" from="Start/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Options/Button" to="." method="_on_settings_button_pressed"]

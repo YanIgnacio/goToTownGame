@@ -30,6 +30,7 @@ func _process(delta):
 	clamp(speed, -20000, 20000)
 	
 	if direction:
+		$aceleration.play()
 		speed += TORQUE * direction
 	else:
 		speed = 0
@@ -75,6 +76,7 @@ func activatePowerUp():
 func stickyTires():
 	stickyTiresSprite.visible = true
 	stickyTiresActive = true
+	$stickyAudio.play()
 	var downforce = $frontWheelPin/RayCast2D.target_position * 200
 	if not is_on_floor(frontWheel):
 		frontWheel.apply_central_force(downforce)
@@ -84,6 +86,7 @@ func stickyTires():
 func bouncyTires():
 	bouncyTiresSprite.visible = true
 	bouncyTiresActive = true
+	$bouncyAudio.play()
 	var normalVector = Vector2.UP
 	var upforce = 0
 	
@@ -98,10 +101,12 @@ func bouncyTires():
 func truckLid():
 	lid.visible = true
 	lid.get_node("CollisionShape2D").set_deferred('disabled', false)
+	$lidAudio.play()
 	pass
 	
 func truckRockets():
 	rocket.visible = true
+	$rocketAudio.play()
 	pass
 	
 func _on_timer_timeout():

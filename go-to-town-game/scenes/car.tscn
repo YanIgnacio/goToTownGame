@@ -4,6 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dpg6j57x8h38b" path="res://sprites/car.png" id="2_50v30"]
 [ext_resource type="Texture2D" uid="uid://7bqfgi56w4y8" path="res://sprites/tire.png" id="3_50v30"]
 [ext_resource type="Texture2D" uid="uid://uoybq4k2fqni" path="res://sprites/terrenos100.png" id="5_3mrxu"]
+[ext_resource type="AudioStream" uid="uid://bpfn522ajx1mi" path="res://sfx/sfxaAceleração.mp3" id="5_uraa1"]
+[ext_resource type="AudioStream" uid="uid://b0v7l4due4nkv" path="res://sfx/foguetaosfx.mp3" id="6_gm33m"]
+[ext_resource type="AudioStream" uid="uid://585s0kbbal3k" path="res://sfx/boingoing.mp3" id="7_ugdpj"]
+[ext_resource type="AudioStream" uid="uid://cyb61i4n7m7yw" path="res://sfx/sticky.mp3" id="8_hylxu"]
+[ext_resource type="AudioStream" uid="uid://1v22bu76j57r" path="res://sfx/tampasfx.mp3" id="9_6mia2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_50v30"]
 
@@ -201,6 +206,21 @@ texture = SubResource("AtlasTexture_jtldb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car/bouncyTires" unique_id=1218465478]
 shape = SubResource("RectangleShape2D_4clw4")
 disabled = true
+
+[node name="aceleration" type="AudioStreamPlayer2D" parent="car" unique_id=560859827]
+stream = ExtResource("5_uraa1")
+
+[node name="rocketAudio" type="AudioStreamPlayer2D" parent="car" unique_id=1945471980]
+stream = ExtResource("6_gm33m")
+
+[node name="bouncyAudio" type="AudioStreamPlayer2D" parent="car" unique_id=1927678307]
+stream = ExtResource("7_ugdpj")
+
+[node name="stickyAudio" type="AudioStreamPlayer2D" parent="car" unique_id=1764084971]
+stream = ExtResource("8_hylxu")
+
+[node name="lidAudio" type="AudioStreamPlayer2D" parent="car" unique_id=507608985]
+stream = ExtResource("9_6mia2")
 
 [connection signal="timeout" from="car/timer" to="car" method="_on_timer_timeout"]
 [connection signal="timeout" from="car/boxTimer" to="car" method="_on_box_timer_timeout"]
