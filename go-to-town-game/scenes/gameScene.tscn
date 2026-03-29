@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bipjfoywcec28" path="res://scenes/terrain.tscn" id="1_qdqca"]
 [ext_resource type="PackedScene" uid="uid://bb01os0mni02f" path="res://scenes/car.tscn" id="2_ijoxr"]
+[ext_resource type="PackedScene" uid="uid://cyoch5wdqdaih" path="res://scenes/powerup.tscn" id="3_ijoxr"]
 
 [node name="Game" type="Node2D" unique_id=197020322]
 
@@ -10,3 +11,6 @@ position = Vector2(0, -2)
 
 [node name="Carro" parent="." unique_id=1410308043 instance=ExtResource("2_ijoxr")]
 position = Vector2(155, -185)
+
+[node name="Node2D2" parent="." unique_id=2057787156 instance=ExtResource("3_ijoxr")]
+position = Vector2(147, -99)
