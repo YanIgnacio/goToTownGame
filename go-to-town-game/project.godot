@@ -15,6 +15,11 @@ run/main_scene="uid://chwucg6sbt7wp"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameState="*uid://cbvcwcmg36uyk"
+PersistentBackground="*uid://cjtsaekp8dlfh"
+
 [display]
 
 window/size/mode=2

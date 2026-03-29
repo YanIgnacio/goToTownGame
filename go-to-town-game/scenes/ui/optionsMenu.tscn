@@ -1,27 +1,9 @@
 [gd_scene format=3 uid="uid://ctd8r2x5pec0t"]
 
 [ext_resource type="Script" uid="uid://e1unc1rew814" path="res://scripts/ui/optionsMenu.gd" id="1_25gve"]
+[ext_resource type="Texture2D" uid="uid://uoybq4k2fqni" path="res://sprites/terrenos100.png" id="2_6ts10"]
 
-[sub_resource type="FontFile" id="FontFile_25gve"]
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/32/0/ascent = 0.0
-cache/0/32/0/descent = 0.0
-cache/0/32/0/underline_position = 0.0
-cache/0/32/0/underline_thickness = 0.0
-cache/0/32/0/scale = 1.0
+[sub_resource type="Theme" id="Theme_6ts10"]
 
 [node name="Control" type="Control" unique_id=1089315163]
 layout_mode = 3
@@ -32,6 +14,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_25gve")
 
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1703316620]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="musicVolumeBox" type="MarginContainer" parent="." unique_id=1051639014]
 layout_mode = 1
 anchors_preset = 8
@@ -39,19 +29,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -90.0
-offset_right = 160.0
-offset_bottom = -30.000763
+offset_left = -120.0
+offset_top = -35.0
+offset_right = 120.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="musicVolumeBox" unique_id=1055757524]
-layout_mode = 2
-text = "music volume"
-
 [node name="OptionButton" type="OptionButton" parent="musicVolumeBox" unique_id=1360848725]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 2
 layout_mode = 2
+theme = SubResource("Theme_6ts10")
+
+[node name="Sprite2D" type="Sprite2D" parent="musicVolumeBox" unique_id=1158913423]
+texture_filter = 1
+position = Vector2(120, 35.000004)
+scale = Vector2(5, 5)
+texture = ExtResource("2_6ts10")
+region_enabled = true
+region_rect = Rect2(711, 360, 48, 14)
 
 [node name="effectsVolumeBox" type="MarginContainer" parent="." unique_id=1948781827]
 layout_mode = 1
@@ -60,40 +57,51 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = 30.0
-offset_right = 160.0
-offset_bottom = 89.99924
+offset_left = -120.0
+offset_top = -34.999817
+offset_right = 120.0
+offset_bottom = 34.999817
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="effectsVolumeBox" unique_id=1430918702]
-layout_mode = 2
-text = "sound effects volume"
-
 [node name="OptionButton" type="OptionButton" parent="effectsVolumeBox" unique_id=1948218406]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+theme = SubResource("Theme_6ts10")
+
+[node name="Sprite2D" type="Sprite2D" parent="effectsVolumeBox" unique_id=1587035704]
+texture_filter = 1
+position = Vector2(120, 34.999634)
+scale = Vector2(5, 5)
+texture = ExtResource("2_6ts10")
+region_enabled = true
+region_rect = Rect2(711, 329, 48, 14)
 
 [node name="back" type="MarginContainer" parent="." unique_id=1217247429]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = 150.0
-offset_right = 160.0
-offset_bottom = 209.99927
-
-[node name="RichTextLabel" type="RichTextLabel" parent="back" unique_id=1252975688]
-layout_mode = 2
-theme_override_fonts/normal_font = SubResource("FontFile_25gve")
-theme_override_font_sizes/normal_font_size = 32
-text = "return to menu"
+offset_left = -113.0
+offset_top = -61.0
+offset_right = 113.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Button" type="Button" parent="back" unique_id=708088567]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="back" unique_id=886361954]
+texture_filter = 1
+position = Vector2(114, 61.999996)
+scale = Vector2(5, 5)
+texture = ExtResource("2_6ts10")
+region_enabled = true
+region_rect = Rect2(649, 340, 45, 24)
 
 [connection signal="pressed" from="musicVolumeBox/OptionButton" to="." method="_on_music_volume_button_pressed"]
 [connection signal="pressed" from="effectsVolumeBox/OptionButton" to="." method="_on_effects_volume_button_pressed"]
