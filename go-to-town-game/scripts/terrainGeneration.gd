@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var flat_spawn_length: int = 1000
 @export var chunk_width: int = 20000
 @export var point_spacing: int = 16
 @export var terrain_height: float = 500.0
@@ -9,6 +10,7 @@ extends Node2D
 var noise := FastNoiseLite.new()
 var generated_up_to: float = 0.0
 
+
 func _ready():
 	noise.noise_type = FastNoiseLite.TYPE_PERLIN
 	noise.frequency = noise_frequency
@@ -17,6 +19,11 @@ func _ready():
 	generated_up_to = chunk_width
 
 func get_height(x: float) -> float:
+	if x < flat_spawn_length:
+		return 0.0
+	if x < flat_spawn_length + 200:
+		var t = (x - flat_spawn_length) / 200.0  # 0.0 to 1.0
+		return lerp(0.0, noise.get_noise_1d(x) * terrain_height, t)
 	return noise.get_noise_1d(x) * terrain_height
 
 func smooth(points: Array, passes: int) -> Array:

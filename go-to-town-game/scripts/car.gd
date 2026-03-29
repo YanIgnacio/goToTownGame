@@ -15,7 +15,6 @@ var truckRocketsActive = false
 @onready var frontWheel = $frontWheelPin/frontWheel
 @onready var backWheel = $backWheelPin/backWheel
 
-
 func _process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
