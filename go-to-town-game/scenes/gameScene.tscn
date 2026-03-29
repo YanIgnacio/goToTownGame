@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chwucg6sbt7wp"]
 
-[ext_resource type="Script" uid="uid://b5y78aq0pc6xc" path="res://scenes/gameManager.gd" id="1_4doxw"]
+[ext_resource type="Script" uid="uid://b5y78aq0pc6xc" path="res://scripts/gameManager.gd" id="1_4doxw"]
 [ext_resource type="PackedScene" uid="uid://bipjfoywcec28" path="res://scenes/terrain.tscn" id="1_qdqca"]
 [ext_resource type="PackedScene" uid="uid://bb01os0mni02f" path="res://scenes/car.tscn" id="2_ijoxr"]
 [ext_resource type="PackedScene" uid="uid://0pxognhc6xvw" path="res://scenes/boxes/squareBox.tscn" id="3_0smmp"]

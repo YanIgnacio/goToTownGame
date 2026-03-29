@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://cvndseyirxc0w"]
+[gd_scene format=3 uid="uid://dedijy4p6ed1g"]
 
-[ext_resource type="Texture2D" uid="uid://dg2ycsje5sh02" path="res://sprites/2948768-pixel-minecraft-style-land-background-vetor.jpg" id="2_g4qto"]
 [ext_resource type="PackedScene" uid="uid://bb01os0mni02f" path="res://scenes/car.tscn" id="3_hr5et"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ki6c0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr5et"]
 size = Vector2(1153.5, 111.537506)
@@ -17,7 +18,7 @@ position = Vector2(573, 597)
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1157932171]
 position = Vector2(0, -4.999939)
 scale = Vector2(1.1739795, 0.11377552)
-texture = ExtResource("2_g4qto")
+texture = SubResource("CompressedTexture2D_ki6c0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=876305044]
 shape = SubResource("RectangleShape2D_hr5et")
@@ -28,7 +29,7 @@ position = Vector2(1719, 590)
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1656804217]
 position = Vector2(1, 6.1035156e-05)
 scale = Vector2(1.1739795, 0.11377552)
-texture = ExtResource("2_g4qto")
+texture = SubResource("CompressedTexture2D_ki6c0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=59003184]
 position = Vector2(0, 6)
@@ -41,7 +42,7 @@ position = Vector2(-51, 66)
 position = Vector2(-5.000004, 5)
 rotation = 1.5707964
 scale = Vector2(1.1739795, 0.11377552)
-texture = ExtResource("2_g4qto")
+texture = SubResource("CompressedTexture2D_ki6c0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=2031709421]
 position = Vector2(-4, 2)

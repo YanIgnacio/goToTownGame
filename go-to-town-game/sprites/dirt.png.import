@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://og3b405maoes"
-path="res://.godot/imported/pneu.png-33d428e2820b71f5c06efc75d9bad69d.ctex"
+uid="uid://cdj4go5ql8c8n"
+path="res://.godot/imported/dirt.png-3ed09a4c6a83c7f4889244248e493b92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/pneu.png"
-dest_files=["res://.godot/imported/pneu.png-33d428e2820b71f5c06efc75d9bad69d.ctex"]
+source_file="res://sprites/dirt.png"
+dest_files=["res://.godot/imported/dirt.png-3ed09a4c6a83c7f4889244248e493b92.ctex"]
 
 [params]
 

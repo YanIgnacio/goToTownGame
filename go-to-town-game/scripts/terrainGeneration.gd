@@ -108,4 +108,6 @@ func generate_terrain():
 	rect.size = Vector2(200, 4000)
 	$WinZone/CollisionShape2D.shape = rect
 
-	print("WinZone bounds: ", $WinZone.global_position, " size: ", rect.size)
+	$Polygon2D.texture = load("res://sprites/dirt.png")
+	$Polygon2D.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
+	$Polygon2D.texture_scale = Vector2(0.5, 0.5)
