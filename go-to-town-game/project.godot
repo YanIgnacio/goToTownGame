@@ -29,6 +29,7 @@ window/size/initial_position_type=4
 
 player=""
 winZone=""
+veggie=""
 
 [physics]
 

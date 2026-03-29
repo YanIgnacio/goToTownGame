@@ -14,10 +14,13 @@ var bouncyTiresActive = false
 var truckLidActive = false
 
 @onready var timer = $timer
+@onready var boxTimer = $boxTimer
 @onready var frontWheel = $frontWheelPin/frontWheel
 @onready var backWheel = $backWheelPin/backWheel
 @onready var rocket = $rocket
 @onready var lid = $truckLid
+@onready var boxArea = $Area2D
+@onready var gameOverScreen = get_parent().get_parent().get_node("gameOver")
 
 func _process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -39,6 +42,10 @@ func _process(delta):
 		backWheel.apply_torque(speed)
 	
 	wasOnFloor = not (not is_on_floor(frontWheel) and not is_on_floor(backWheel))
+	
+	if get_carried_boxes() <= 0:
+		if boxTimer.is_stopped():
+			boxTimer.start()
 		
 func _physics_process(delta):
 	if stickyTiresActive:
@@ -100,3 +107,14 @@ func _on_timer_timeout():
 	rocket.visible = false
 	lid.visible = false
 	lid.get_node("CollisionShape2D").set_deferred('disabled', true)
+	
+func get_carried_boxes():
+	return boxArea.get_overlapping_bodies().filter(
+		func(body): return body.is_in_group('veggie')
+	).size()
+
+
+func _on_box_timer_timeout():
+	print('terminei')
+	if get_carried_boxes() <= 0:
+		gameOverScreen.gameFinished()

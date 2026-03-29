@@ -4,10 +4,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pijs"]
 
-[node name="Node2D" type="Node2D" unique_id=1519297380]
+[node name="Node2D" type="Node2D" unique_id=1519297380 groups=["veggie"]]
 z_index = -1
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=752191383]
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=752191383 groups=["veggie"]]
 collision_layer = 6
 collision_mask = 6
 mass = 0.1

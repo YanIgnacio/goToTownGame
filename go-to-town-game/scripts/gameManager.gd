@@ -1,6 +1,6 @@
 extends Node2D
 
-
+@onready var winScreen = $gameWon
 func _ready():
 	call_deferred("_connect_win_zone")
 
@@ -13,4 +13,4 @@ func _connect_win_zone():
 		print("WinZone not found!")
 
 func _on_game_won():
-	print("Game Won!")
+	winScreen.gameFinished()
