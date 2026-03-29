@@ -2,10 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://uoybq4k2fqni" path="res://sprites/terrenos100.png" id="1_6kgvv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0pijs"]
-atlas = ExtResource("1_6kgvv")
-region = Rect2(1471.4764, 63.218296, 257.4088, 129.92221)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pijs"]
 
 [node name="Node2D" type="Node2D" unique_id=1519297380 groups=["veggie"]]
@@ -20,8 +16,10 @@ mass = 0.1
 light_mask = 4
 visibility_layer = 4
 position = Vector2(0, 9.536743e-07)
-scale = Vector2(0.031249998, 0.015624999)
+scale = Vector2(0.155, 0.155)
 texture = ExtResource("1_6kgvv")
+region_enabled = true
+region_rect = Rect2(1472, 64, 257, 128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=148432555]
 scale = Vector2(2, 1)

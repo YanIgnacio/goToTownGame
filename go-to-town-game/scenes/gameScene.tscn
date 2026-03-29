@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bp5thjnkncsx8" path="res://scenes/boxes/rectangleBox.tscn" id="4_4doxw"]
 [ext_resource type="Script" uid="uid://cbw4sjb46b6sb" path="res://scripts/game_over.gd" id="7_ldpgw"]
 [ext_resource type="AudioStream" uid="uid://b8yk5wyg0pk5l" path="res://sfx/forest-ambience-light-birdsong-distant-rooster-vincentmets-1-03-38.mp3" id="8_5rda0"]
+[ext_resource type="FontFile" uid="uid://d3k641i3awobg" path="res://fonts/Minecraft.ttf" id="8_5rda0"]
 [ext_resource type="Texture2D" uid="uid://uoybq4k2fqni" path="res://sprites/terrenos100.png" id="8_gi2u3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gi2u3"]
@@ -177,6 +178,14 @@ shape = SubResource("RectangleShape2D_ldpgw")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1753383344]
 stream = ExtResource("8_5rda0")
 autoplay = true
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1266559791]
+offset_left = 251.0
+offset_top = -170.0
+offset_right = 521.0
+offset_bottom = -115.0
+theme_override_fonts/normal_font = ExtResource("8_5rda0")
+text = "Press the ESCAPE Key
+if you get stuck!"
 
 [connection signal="pressed" from="gameOver/Button" to="gameOver" method="_on_button_pressed"]
 [connection signal="pressed" from="gameOver/Button2" to="gameOver" method="_on_button_2_pressed"]
