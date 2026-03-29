@@ -1,9 +1,9 @@
 extends Node2D
 
 @export var chunk_width: int = 20000
-@export var point_spacing: int = 20
-@export var terrain_height: float = 450.0
-@export var noise_frequency: float = 0.0005  # lower for smoother hills
+@export var point_spacing: int = 16
+@export var terrain_height: float = 500.0
+@export var noise_frequency: float = 0.005  # lower for smoother hills
 @export var camera: Camera2D
 
 var noise := FastNoiseLite.new()
@@ -69,4 +69,4 @@ func _process(_delta):
 	var cam_x = camera.global_position.x
 	if cam_x + 1200 > generated_up_to:
 		generate_terrain(generated_up_to)
-		generated_up_to += chunk_width  # ← matches chunk_width now
+		generated_up_to += chunk_width
