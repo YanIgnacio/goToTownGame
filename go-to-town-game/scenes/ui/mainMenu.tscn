@@ -1,29 +1,8 @@
 [gd_scene format=3 uid="uid://dbnbdgsbptjvt"]
 
 [ext_resource type="Script" uid="uid://q62m6xfjds63" path="res://scripts/ui/mainMenu.gd" id="1_ph80j"]
-[ext_resource type="Texture2D" uid="uid://djkhqsl2gorr6" path="res://sprites/menuBackground.png" id="2_j3ryx"]
 [ext_resource type="Texture2D" uid="uid://hna1rt274i0b" path="res://sprites/menuTitle.png" id="3_c8enf"]
-
-[sub_resource type="FontFile" id="FontFile_f3uoa"]
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/32/0/ascent = 0.0
-cache/0/32/0/descent = 0.0
-cache/0/32/0/underline_position = 0.0
-cache/0/32/0/underline_thickness = 0.0
-cache/0/32/0/scale = 1.0
+[ext_resource type="Texture2D" uid="uid://uoybq4k2fqni" path="res://sprites/terrenos100.png" id="4_oxtcp"]
 
 [node name="Control" type="Control" unique_id=911159707]
 layout_mode = 3
@@ -42,15 +21,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="menuBackground" type="TextureRect" parent="MarginContainer" unique_id=2010559205]
-layout_mode = 2
-texture = ExtResource("2_j3ryx")
+[node name="titleAnchor" type="Node2D" parent="." unique_id=2099387801]
+position = Vector2(576, 324)
 
-[node name="menuTitle" type="TextureRect" parent="." unique_id=2085755251]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="menuTitle" type="TextureRect" parent="titleAnchor" unique_id=2085755251]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(578, 324)
@@ -59,68 +42,88 @@ size_flags_vertical = 4
 texture = ExtResource("3_c8enf")
 
 [node name="Start" type="MarginContainer" parent="." unique_id=560312755]
+texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.035
-anchor_top = 0.509
-anchor_right = 0.035
-anchor_bottom = 0.509
-offset_left = 0.6800003
-offset_top = -29.832
-offset_right = 320.68
-offset_bottom = 30.168
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = 165.0
+offset_right = -182.0
+offset_bottom = 205.0
+grow_horizontal = 2
 grow_vertical = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Start" unique_id=557262709]
-layout_mode = 2
-theme_override_fonts/normal_font = SubResource("FontFile_f3uoa")
-theme_override_font_sizes/normal_font_size = 32
-text = "Haha yes start gam"
+scale = Vector2(5, 5)
+pivot_offset = Vector2(18, 20)
 
 [node name="Button" type="Button" parent="Start" unique_id=554189516]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="Options" type="MarginContainer" parent="." unique_id=1465162719]
+[node name="Sprite2D" type="Sprite2D" parent="Start" unique_id=1864866202]
+texture_filter = 1
+position = Vector2(18, 20)
+texture = ExtResource("4_oxtcp")
+region_enabled = true
+region_rect = Rect2(652, 268, 36, 39)
+
+[node name="Options" type="MarginContainer" parent="." unique_id=332457250]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.035
-anchor_top = 0.633
-anchor_right = 0.035
-anchor_bottom = 0.633
-offset_left = -0.3199997
-offset_top = -30.184021
-offset_right = 319.68
-offset_bottom = 29.815979
+anchor_left = 0.5
+anchor_top = 0.407
+anchor_right = 0.5
+anchor_bottom = 0.407
+offset_left = -23.125
+offset_top = -13.735992
+offset_right = 23.125
+offset_bottom = 11.264008
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+pivot_offset = Vector2(23, 12)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Options" unique_id=1139065800]
+[node name="Button" type="Button" parent="Options" unique_id=779234886]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-theme_override_fonts/normal_font = SubResource("FontFile_f3uoa")
-theme_override_font_sizes/normal_font_size = 32
-text = "change optons"
 
-[node name="Button" type="Button" parent="Options" unique_id=791199349]
-layout_mode = 2
+[node name="Sprite2D" type="Sprite2D" parent="Options" unique_id=731418779]
+texture_filter = 1
+position = Vector2(23, 12.5)
+texture = ExtResource("4_oxtcp")
+region_enabled = true
+region_rect = Rect2(713, 269, 46, 25)
 
-[node name="Quit" type="MarginContainer" parent="." unique_id=606871402]
+[node name="Quit" type="MarginContainer" parent="." unique_id=72073616]
+texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.035
-anchor_top = 0.75600004
-anchor_right = 0.035
-anchor_bottom = 0.75600004
-offset_left = -0.3199997
-offset_top = -29.888031
-offset_right = 319.68
-offset_bottom = 30.111969
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 182.0
+offset_top = 165.0
+offset_right = 218.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+pivot_offset = Vector2(18, 20)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Quit" unique_id=1602376506]
+[node name="Button" type="Button" parent="Quit" unique_id=459560095]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-theme_override_fonts/normal_font = SubResource("FontFile_f3uoa")
-theme_override_font_sizes/normal_font_size = 32
-text = "no bye"
 
-[node name="Button" type="Button" parent="Quit" unique_id=828779171]
-layout_mode = 2
+[node name="Sprite2D" type="Sprite2D" parent="Quit" unique_id=2064720652]
+texture_filter = 1
+position = Vector2(18, 20)
+texture = ExtResource("4_oxtcp")
+region_enabled = true
+region_rect = Rect2(786, 268, 36, 39)
 
 [connection signal="pressed" from="Start/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Options/Button" to="." method="_on_settings_button_pressed"]
