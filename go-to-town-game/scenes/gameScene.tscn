@@ -8,5 +8,5 @@
 [node name="Terrain" parent="." unique_id=843040949 instance=ExtResource("1_qdqca")]
 position = Vector2(0, -2)
 
-[node name="Node2D" parent="." unique_id=1410308043 instance=ExtResource("2_ijoxr")]
+[node name="Carro" parent="." unique_id=1410308043 instance=ExtResource("2_ijoxr")]
 position = Vector2(155, -185)
