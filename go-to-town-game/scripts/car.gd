@@ -81,7 +81,10 @@ func truckRockets():
 
 func _on_timer_timeout():
 	stickyTiresActive = false
-	bouncyTiresActive = false
+	frontWheel.physics_material_override.bounce = 0
+	backWheel.physics_material_override.bounce = 0
+	frontWheel.physics_material_override.absorbent = true
+	backWheel.physics_material_override.absorbent = true
 	truckLidActive = false
 	rocket.visible = false
 	lid.visible = false
