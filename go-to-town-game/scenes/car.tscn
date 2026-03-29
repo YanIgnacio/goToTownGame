@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://7bqfgi56w4y8" path="res://sprites/tire.png" id="3_50v30"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_50v30"]
-absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mrxu"]
 radius = 13.349991
@@ -29,7 +28,6 @@ motor_enabled = true
 [node name="frontWheel" type="RigidBody2D" parent="car/frontWheelPin" unique_id=587297284]
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_50v30")
-gravity_scale = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="car/frontWheelPin/frontWheel" unique_id=163323550]
 texture_filter = 1
@@ -55,7 +53,6 @@ motor_enabled = true
 [node name="backWheel" type="RigidBody2D" parent="car/backWheelPin" unique_id=267259955]
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_50v30")
-gravity_scale = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="car/backWheelPin/backWheel" unique_id=489488407]
 texture_filter = 1
@@ -82,3 +79,9 @@ polygon = PackedVector2Array(-506.25006, -28.333332, -506.25006, 35, 193.75002, 
 zoom = Vector2(2, 2)
 drag_horizontal_offset = 1.0
 drag_vertical_offset = -0.8
+
+[node name="Timer" type="Timer" parent="car" unique_id=832538064]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="car/Timer" to="car" method="_on_timer_timeout"]
