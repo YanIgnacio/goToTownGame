@@ -1,9 +1,11 @@
 extends RigidBody2D
 
 const TORQUE = 50.0
+const AIR_SPIN = 100
 const JUMP_VELOCITY = 0
 const MAX_SPEED = 900
 const THRUST = 1000
+const BOUNCE = 60
 var powerup_array = [stickyTires, bouncyTires, truckLid, truckRockets]
 var speed = 0.0
 var wasOnFloor = true
@@ -30,20 +32,24 @@ func _process(delta):
 	if not is_on_floor(frontWheel) and not is_on_floor(backWheel):
 		if wasOnFloor:
 			speed = 0
+		speed += AIR_SPIN * direction
 		apply_torque(speed)
 	else:
 		frontWheel.apply_torque(speed)
 		backWheel.apply_torque(speed)
-		
-	if rocket.visible:
-		apply_central_force(Vector2.RIGHT.rotated(rotation) * THRUST)
-
 	
 	wasOnFloor = not (not is_on_floor(frontWheel) and not is_on_floor(backWheel))
 		
 func _physics_process(delta):
 	if stickyTiresActive:
 		stickyTires()
+	
+	if rocket.visible:
+		apply_central_force(transform.x * THRUST)
+		angular_velocity = lerp(angular_velocity, 0.0, 0.1)
+	
+	if bouncyTiresActive:
+		bouncyTires()
 
 func is_on_floor(rigidBody):
 	var rayCast = rigidBody.get_parent().get_node("RayCast2D")
@@ -59,16 +65,25 @@ func activatePowerUp():
 	
 func stickyTires():
 	stickyTiresActive = true
-	var downforce = Vector2.DOWN * 2000
-	frontWheel.apply_central_force(downforce)
-	backWheel.apply_central_force(downforce)
+	var downforce = $frontWheelPin/RayCast2D.target_position * 200
+	if not is_on_floor(frontWheel):
+		frontWheel.apply_central_force(downforce)
+	if not is_on_floor(backWheel):
+		backWheel.apply_central_force(downforce)
 	
 func bouncyTires():
-	frontWheel.physics_material_override.bounce = 1.0
-	backWheel.physics_material_override.bounce = 1.0
-	frontWheel.physics_material_override.absorbent = false
-	backWheel.physics_material_override.absorbent = false
+	bouncyTiresActive = true
+	var normalVector = Vector2.UP
+	var upforce = 0
 	
+	if is_on_floor(frontWheel):
+		upforce = $frontWheelPin/RayCast2D.get_collision_normal() * BOUNCE
+		frontWheel.apply_central_impulse(upforce)
+		
+	if is_on_floor(backWheel):
+		upforce = $backWheelPin/RayCast2D.get_collision_normal() * BOUNCE
+		backWheel.apply_central_impulse(upforce)
+
 func truckLid():
 	lid.visible = true
 	lid.get_node("CollisionShape2D").set_deferred('disabled', false)
@@ -78,7 +93,6 @@ func truckRockets():
 	rocket.visible = true
 	pass
 	
-
 func _on_timer_timeout():
 	stickyTiresActive = false
 	bouncyTiresActive = false
