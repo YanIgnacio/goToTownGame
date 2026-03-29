@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chwucg6sbt7wp"]
 
-[ext_resource type="Script" uid="uid://b5y78aq0pc6xc" path="res://scripts/gameManager.gd" id="1_4doxw"]
+[ext_resource type="Script" path="res://scripts/gameManager.gd" id="1_ldpgw"]
 [ext_resource type="PackedScene" uid="uid://bipjfoywcec28" path="res://scenes/terrain.tscn" id="1_qdqca"]
 [ext_resource type="PackedScene" uid="uid://bb01os0mni02f" path="res://scenes/car.tscn" id="2_ijoxr"]
 [ext_resource type="PackedScene" uid="uid://0pxognhc6xvw" path="res://scenes/boxes/squareBox.tscn" id="3_0smmp"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://cbw4sjb46b6sb" path="res://scripts/game_over.gd" id="7_ldpgw"]
 
 [node name="Game" type="Node2D" unique_id=197020322]
-script = ExtResource("1_4doxw")
+script = ExtResource("1_ldpgw")
 
 [node name="Terrain" parent="." unique_id=843040949 instance=ExtResource("1_qdqca")]
 position = Vector2(0, -2)
