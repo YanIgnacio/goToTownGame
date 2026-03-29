@@ -22,6 +22,8 @@ radius = 13.349991
 [node name="car" type="RigidBody2D" parent="." unique_id=1811045782 groups=["player"]]
 collision_layer = 3
 collision_mask = 3
+center_of_mass_mode = 1
+center_of_mass = Vector2(15, 0)
 script = ExtResource("1_50v30")
 
 [node name="frontWheelPin" type="PinJoint2D" parent="car" unique_id=1654218986]
@@ -81,7 +83,7 @@ texture = ExtResource("2_50v30")
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="car" unique_id=1404330003 groups=["player"]]
 position = Vector2(-7, 1.9999993)
 scale = Vector2(0.16, 0.6)
-polygon = PackedVector2Array(-506.25006, -28.333332, -506.25006, 35, 193.75002, 35, 337.50003, 18.333334, 443.75003, 41.666668, 593.75006, 41.666668, 593.75006, 15, 500.00003, 15, 500.00003, -36.666664, 212.50002, -36.666664, 175.00002, -28.333332, 175.00002, 26.666668, -481.25006, 26.666668, -481.25006, -28.333332)
+polygon = PackedVector2Array(-506.25006, -28.333332, -506.25006, 35, 193.75002, 35, 337.50003, 18.333334, 443.75003, 41.666668, 500.00003, 41.666668, 500.00003, 28.333334, 500.00003, 15, 500.00003, -36.666664, 212.50002, -36.666664, 175.00002, -28.333332, 175.00002, 26.666668, -481.25006, 26.666668, -481.25006, -28.333332)
 
 [node name="Camera2D" type="Camera2D" parent="car" unique_id=199159770]
 zoom = Vector2(2, 2)
