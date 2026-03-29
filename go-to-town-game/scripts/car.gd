@@ -5,6 +5,7 @@ const AIR_SPIN = 100
 const JUMP_VELOCITY = 0
 const MAX_SPEED = 900
 const THRUST = 1000
+const BOUNCE = 60
 var powerup_array = [stickyTires, bouncyTires, truckLid, truckRockets]
 var speed = 0.0
 var wasOnFloor = true
@@ -58,15 +59,17 @@ func is_on_floor(rigidBody):
 func activatePowerUp():
 	var chosen_powerup = randi_range(0, 3)
 	var powerup = powerup_array[chosen_powerup]
-	bouncyTires()
+	powerup.call()
 	timer.start()
 	
 	
 func stickyTires():
 	stickyTiresActive = true
-	var downforce = Vector2.DOWN * 2000
-	frontWheel.apply_central_force(downforce)
-	backWheel.apply_central_force(downforce)
+	var downforce = $frontWheelPin/RayCast2D.target_position * 200
+	if not is_on_floor(frontWheel):
+		frontWheel.apply_central_force(downforce)
+	if not is_on_floor(backWheel):
+		backWheel.apply_central_force(downforce)
 	
 func bouncyTires():
 	bouncyTiresActive = true
@@ -74,11 +77,11 @@ func bouncyTires():
 	var upforce = 0
 	
 	if is_on_floor(frontWheel):
-		upforce = $frontWheelPin/RayCast2D.get_collision_normal() * 60
+		upforce = $frontWheelPin/RayCast2D.get_collision_normal() * BOUNCE
 		frontWheel.apply_central_impulse(upforce)
 		
 	if is_on_floor(backWheel):
-		upforce = $backWheelPin/RayCast2D.get_collision_normal() * 60
+		upforce = $backWheelPin/RayCast2D.get_collision_normal() * BOUNCE
 		backWheel.apply_central_impulse(upforce)
 
 func truckLid():
