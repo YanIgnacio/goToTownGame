@@ -17,7 +17,7 @@ color = Color(0.5882353, 0.41960785, 0.28235295, 1)
 position = Vector2(0, 6)
 width = 12.0
 texture = ExtResource("2_oqplg")
-texture_mode = 1
+texture_mode = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1540163885]
 
