@@ -172,6 +172,7 @@ shape = SubResource("RectangleShape2D_4clw4")
 disabled = true
 
 [node name="bouncyTires" type="StaticBody2D" parent="car" unique_id=2021189544]
+visible = false
 position = Vector2(29, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="car/bouncyTires" unique_id=526905931]
