@@ -19,7 +19,6 @@ var last_cam_x = 0.0
 
 var noise := FastNoiseLite.new()
 
-# City sits at the end of the level
 var city_start: float
 var city_end: float
 
@@ -28,7 +27,6 @@ func _ready():
 	noise.frequency = noise_frequency
 	noise.seed = randi()
 
-	# Place city at the end of the chunk
 	city_end = chunk_width
 	city_start = city_end - city_length
 
@@ -50,32 +48,26 @@ func _process(_delta):
 				child.position.x -= dx * (1.0 - middle_speed)
 
 func get_height(x: float) -> float:
-	# Flat spawn zone
 	if x < flat_spawn_length:
 		return 0.0
 
-	# Transition from spawn into terrain
 	if x < flat_spawn_length + transition_length:
 		var t = (x - flat_spawn_length) / transition_length
 		return lerp(0.0, noise.get_noise_1d(x) * terrain_height, t)
 
-	# Transition into city
 	if x >= city_start - transition_length and x < city_start:
 		var t = (x - (city_start - transition_length)) / transition_length
 		return lerp(noise.get_noise_1d(x) * terrain_height, 0.0, t)
 
-	# City flat floor
 	if x >= city_start and x <= city_end:
 		return 0.0
 
-	# Normal terrain between spawn and city
 	return noise.get_noise_1d(x) * terrain_height
 
 func smooth(points: Array, passes: int) -> Array:
 	for _p in range(passes):
 		for i in range(2, points.size() - 2):
 			var x = points[i].x
-			# Skip flat zones so they stay perfectly flat
 			if x < flat_spawn_length:
 				continue
 			if x >= city_start and x <= city_end:
@@ -99,7 +91,6 @@ func generate_terrain():
 
 	raw_points = smooth(raw_points, 40)
 
-	# Collision
 	var segments := PackedVector2Array()
 	for i in range(raw_points.size() - 1):
 		segments.append(raw_points[i])
@@ -109,7 +100,6 @@ func generate_terrain():
 	shape.segments = segments
 	$StaticBody2D/CollisionShape2D.shape = shape
 
-	# Polygon2D fill
 	var points := PackedVector2Array()
 	for p in raw_points:
 		points.append(p)
@@ -117,7 +107,6 @@ func generate_terrain():
 	points.append(Vector2(raw_points[0].x, 1000.0))
 	$Polygon2D.polygon = points
 
-	# Line2D surface
 	var surface := PackedVector2Array()
 	for p in raw_points:
 		surface.append(p)
@@ -188,3 +177,34 @@ func generate_terrain():
 		$CityLayer.add_child(front)
 
 		x += tile_world_width
+		
+	for child in $PowerupLayer.get_children():
+		child.queue_free()
+
+	var powerup_scene = load("res://scenes/powerup.tscn")
+
+	var powerup_count = randi_range(3, 6)
+
+	var spawn_area_start = flat_spawn_length + transition_length + 200.0
+	var spawn_area_end = city_start - transition_length - 200.0
+	var section_width = (spawn_area_end - spawn_area_start) / powerup_count
+
+	for i in range(powerup_count):
+		var section_start = spawn_area_start + i * section_width
+		var px = section_start + randf() * section_width
+		var py = get_height(px) - 50.0
+
+		var powerup = powerup_scene.instantiate()
+		powerup.position = Vector2(px, py)
+		$PowerupLayer.add_child(powerup)
+		
+	var flag_texture = load("res://sprites/bandeira.png")
+	var flag = Sprite2D.new()
+	flag.texture = flag_texture
+	flag.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	flag.scale = Vector2(2.0, 2.0)
+	var flag_x = city_start
+	var flag_y = get_height(flag_x)
+	var flag_half_height = (flag.texture.get_height() * 2.0) / 2.0
+	flag.position = Vector2(flag_x, flag_y - flag_half_height)
+	$CityLayer.add_child(flag)
