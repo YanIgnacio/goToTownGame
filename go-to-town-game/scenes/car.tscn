@@ -1,34 +1,25 @@
 [gd_scene format=3 uid="uid://bb01os0mni02f"]
 
 [ext_resource type="Script" uid="uid://8t51v15g0xas" path="res://scripts/car.gd" id="1_50v30"]
-[ext_resource type="Texture2D" uid="uid://bsta50pblce0g" path="res://sprites/carro_placeholder.png" id="2_50v30"]
-[ext_resource type="Texture2D" uid="uid://og3b405maoes" path="res://sprites/pneu.png" id="3_50v30"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtldb"]
-size = Vector2(637.5001, 53.333332)
+[ext_resource type="Texture2D" uid="uid://dpg6j57x8h38b" path="res://sprites/car.png" id="2_50v30"]
+[ext_resource type="Texture2D" uid="uid://7bqfgi56w4y8" path="res://sprites/tire.png" id="3_50v30"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_50v30"]
 absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mrxu"]
-radius = 9.333334
+radius = 13.349991
 
 [node name="Node2D" type="Node2D" unique_id=1410308043]
 
 [node name="car" type="RigidBody2D" parent="." unique_id=1811045782]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_50v30")
 
-[node name="Sprite2D" type="Sprite2D" parent="car" unique_id=1670911067]
-scale = Vector2(0.16, 0.06)
-texture = ExtResource("2_50v30")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="car" unique_id=603730513]
-position = Vector2(0, -3.0000007)
-scale = Vector2(0.16, 0.6)
-shape = SubResource("RectangleShape2D_jtldb")
-
 [node name="frontWheelPin" type="PinJoint2D" parent="car" unique_id=1654218986]
-position = Vector2(46, 20)
+z_index = -2
+position = Vector2(46, 35)
 node_a = NodePath("..")
 node_b = NodePath("frontWheel")
 bias = 0.5
@@ -41,7 +32,8 @@ physics_material_override = SubResource("PhysicsMaterial_50v30")
 gravity_scale = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="car/frontWheelPin/frontWheel" unique_id=163323550]
-scale = Vector2(0.06, 0.06)
+texture_filter = 1
+scale = Vector2(0.67, 0.67)
 texture = ExtResource("3_50v30")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car/frontWheelPin/frontWheel" unique_id=1135697355]
@@ -49,10 +41,11 @@ scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_3mrxu")
 
 [node name="RayCast2D" type="RayCast2D" parent="car/frontWheelPin" unique_id=1252286470]
-target_position = Vector2(0, 20)
+target_position = Vector2(0, 30)
 
 [node name="backWheelPin" type="PinJoint2D" parent="car" unique_id=453226020]
-position = Vector2(-46, 19)
+z_index = -2
+position = Vector2(-58, 35)
 node_a = NodePath("backWheel")
 node_b = NodePath("..")
 bias = 0.5
@@ -65,7 +58,8 @@ physics_material_override = SubResource("PhysicsMaterial_50v30")
 gravity_scale = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="car/backWheelPin/backWheel" unique_id=489488407]
-scale = Vector2(0.06, 0.06)
+texture_filter = 1
+scale = Vector2(0.67, 0.67)
 texture = ExtResource("3_50v30")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car/backWheelPin/backWheel" unique_id=780190578]
@@ -73,7 +67,16 @@ scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_3mrxu")
 
 [node name="RayCast2D" type="RayCast2D" parent="car/backWheelPin" unique_id=921067281]
-target_position = Vector2(0, 20)
+target_position = Vector2(0, 30)
+
+[node name="Sprite2D" type="Sprite2D" parent="car" unique_id=1670911067]
+texture_filter = 1
+texture = ExtResource("2_50v30")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="car" unique_id=1404330003]
+position = Vector2(-7, 1.9999993)
+scale = Vector2(0.16, 0.6)
+polygon = PackedVector2Array(-506.25006, -28.333332, -506.25006, 35, 193.75002, 35, 337.50003, 18.333334, 443.75003, 41.666668, 593.75006, 41.666668, 593.75006, 15, 500.00003, 15, 500.00003, -36.666664, 212.50002, -36.666664, 175.00002, -28.333332, 175.00002, 26.666668, -481.25006, 26.666668, -481.25006, -28.333332)
 
 [node name="Camera2D" type="Camera2D" parent="car" unique_id=199159770]
 zoom = Vector2(2, 2)

@@ -5,8 +5,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egces"]
 
 [node name="Node2D" type="Node2D" unique_id=876893026]
+z_index = -1
 
 [node name="squareBox" type="RigidBody2D" parent="." unique_id=985135444]
+collision_layer = 6
+collision_mask = 6
+mass = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="squareBox" unique_id=1468858500]
 scale = Vector2(0.04, 0.04)
