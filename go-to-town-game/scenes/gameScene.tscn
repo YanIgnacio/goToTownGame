@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0pxognhc6xvw" path="res://scenes/boxes/squareBox.tscn" id="3_0smmp"]
 [ext_resource type="PackedScene" uid="uid://cyoch5wdqdaih" path="res://scenes/powerup.tscn" id="3_ijoxr"]
 [ext_resource type="PackedScene" uid="uid://bp5thjnkncsx8" path="res://scenes/boxes/rectangleBox.tscn" id="4_4doxw"]
+[ext_resource type="Script" uid="uid://cbw4sjb46b6sb" path="res://scripts/game_over.gd" id="7_ldpgw"]
 
 [node name="Game" type="Node2D" unique_id=197020322]
 script = ExtResource("1_4doxw")
@@ -36,3 +37,116 @@ position = Vector2(331, -158)
 
 [node name="Node2D7" parent="." unique_id=2057787156 instance=ExtResource("3_ijoxr")]
 position = Vector2(335, -58)
+
+[node name="gameOver" type="CanvasLayer" parent="." unique_id=270687323]
+process_mode = 2
+script = ExtResource("7_ldpgw")
+
+[node name="Panel" type="Panel" parent="gameOver" unique_id=611515209]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="gameOver" unique_id=742353468]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.0
+offset_top = 83.0
+offset_right = 212.0
+offset_bottom = 157.0
+grow_horizontal = 2
+text = "Game OVER!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="gameOver" unique_id=651217540]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -38.0
+offset_right = 60.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart!"
+
+[node name="Button2" type="Button" parent="gameOver" unique_id=1712429630]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = 38.0
+offset_right = 53.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+text = "Main Menu
+"
+
+[node name="gameWon" type="CanvasLayer" parent="." unique_id=185538503]
+process_mode = 2
+script = ExtResource("7_ldpgw")
+
+[node name="Panel" type="Panel" parent="gameWon" unique_id=954941078]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="gameWon" unique_id=1709778788]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.0
+offset_top = 83.0
+offset_right = 212.0
+offset_bottom = 157.0
+grow_horizontal = 2
+text = "Congratulations! You got to Town!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="gameWon" unique_id=365986227]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -38.0
+offset_right = 60.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Go Again!"
+
+[node name="Button2" type="Button" parent="gameWon" unique_id=595400034]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = 38.0
+offset_right = 53.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+text = "Main Menu
+"
+
+[connection signal="pressed" from="gameOver/Button" to="gameOver" method="_on_button_pressed"]
+[connection signal="pressed" from="gameOver/Button2" to="gameOver" method="_on_button_2_pressed"]
+[connection signal="pressed" from="gameWon/Button" to="gameWon" method="_on_button_pressed"]
+[connection signal="pressed" from="gameWon/Button2" to="gameWon" method="_on_button_2_pressed"]
