@@ -3,17 +3,24 @@
 [ext_resource type="Script" uid="uid://8t51v15g0xas" path="res://scripts/car.gd" id="1_50v30"]
 [ext_resource type="Texture2D" uid="uid://dpg6j57x8h38b" path="res://sprites/car.png" id="2_50v30"]
 [ext_resource type="Texture2D" uid="uid://7bqfgi56w4y8" path="res://sprites/tire.png" id="3_50v30"]
-[ext_resource type="Texture2D" uid="uid://byq1j7w5h8yq6" path="res://sprites/crate.png" id="5_3mrxu"]
-[ext_resource type="Texture2D" uid="uid://856s6onm6wxe" path="res://sprites/5bbc28cc7548f.jpg" id="5_cp117"]
+[ext_resource type="Texture2D" uid="uid://uoybq4k2fqni" path="res://sprites/terrenos100.png" id="4_3mrxu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_50v30"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mrxu"]
 radius = 13.349991
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp117"]
+atlas = ExtResource("4_3mrxu")
+region = Rect2(278.93097, 291.81708, 16.103699, 22.407623)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4clw4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3mrxu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtldb"]
+atlas = ExtResource("4_3mrxu")
+region = Rect2(454.40323, 307.58255, 120.26425, 10.55368)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cp117"]
 
@@ -102,9 +109,10 @@ visible = false
 position = Vector2(29, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="car/rocket" unique_id=1807540142]
+texture_filter = 1
 rotation = 1.5707964
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_cp117")
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_cp117")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car/rocket" unique_id=836786342]
 shape = SubResource("RectangleShape2D_4clw4")
@@ -121,8 +129,8 @@ freeze = true
 freeze_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="car/truckLid" unique_id=342786216]
-scale = Vector2(0.21000123, -0.01)
-texture = ExtResource("5_3mrxu")
+texture_filter = 1
+texture = SubResource("AtlasTexture_jtldb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car/truckLid" unique_id=938711248]
 scale = Vector2(5.5999975, 0.24000034)
