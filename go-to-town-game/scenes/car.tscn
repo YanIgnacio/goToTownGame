@@ -11,16 +11,32 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mrxu"]
 radius = 13.349991
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp117"]
+atlas = ExtResource("4_3mrxu")
+region = Rect2(278.93097, 291.81708, 16.103699, 22.407623)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4clw4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3mrxu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtldb"]
+atlas = ExtResource("4_3mrxu")
+region = Rect2(454.40323, 307.58255, 120.26425, 10.55368)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cp117"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3mrxu"]
 size = Vector2(163, 59.5)
 
-[node name="Node2D" type="Node2D" unique_id=1410308043 groups=["player"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mrxu"]
+atlas = ExtResource("4_3mrxu")
+region = Rect2(399.0926, 334.24268, 35.377228, 36.715027)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4clw4"]
+atlas = ExtResource("4_3mrxu")
+region = Rect2(330.14865, 331.67322, 42.750427, 40.170685)
+
+[node name="Node2D2" type="Node2D" unique_id=1410308043 groups=["player"]]
 
 [node name="car" type="RigidBody2D" parent="." unique_id=1811045782 groups=["player"]]
 collision_layer = 3
@@ -102,9 +118,10 @@ visible = false
 position = Vector2(29, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="car/rocket" unique_id=1807540142]
+texture_filter = 1
 rotation = 1.5707964
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_cp117")
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_cp117")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car/rocket" unique_id=836786342]
 shape = SubResource("RectangleShape2D_4clw4")
@@ -141,6 +158,32 @@ shape = SubResource("RectangleShape2D_3mrxu")
 
 [node name="boxTimer" type="Timer" parent="car" unique_id=1547073088]
 one_shot = true
+
+[node name="stickyTires" type="StaticBody2D" parent="car" unique_id=858786619]
+visible = false
+position = Vector2(29, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="car/stickyTires" unique_id=548344099]
+texture_filter = 1
+scale = Vector2(0.8, 0.8)
+texture = SubResource("AtlasTexture_3mrxu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car/stickyTires" unique_id=1667464562]
+shape = SubResource("RectangleShape2D_4clw4")
+disabled = true
+
+[node name="bouncyTires" type="StaticBody2D" parent="car" unique_id=176866325]
+visible = false
+position = Vector2(29, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="car/bouncyTires" unique_id=571590269]
+texture_filter = 1
+scale = Vector2(0.8, 0.8)
+texture = SubResource("AtlasTexture_4clw4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car/bouncyTires" unique_id=1877035626]
+shape = SubResource("RectangleShape2D_4clw4")
+disabled = true
 
 [connection signal="timeout" from="car/timer" to="car" method="_on_timer_timeout"]
 [connection signal="timeout" from="car/boxTimer" to="car" method="_on_box_timer_timeout"]
