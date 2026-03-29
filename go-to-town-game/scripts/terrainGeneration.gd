@@ -9,6 +9,14 @@ extends Node2D
 @export var transition_length: float = 400.0
 @export var camera: Camera2D
 
+@onready var city_layer = $CityLayer
+
+var back_speed = 0.3
+var middle_speed = 0.6
+var front_speed = 1.0
+
+var last_cam_x = 0.0
+
 var noise := FastNoiseLite.new()
 
 # City sits at the end of the level
@@ -25,6 +33,21 @@ func _ready():
 	city_start = city_end - city_length
 
 	generate_terrain()
+
+
+func _process(_delta):
+	if camera == null:
+		return
+	var cam_x = camera.global_position.x
+	var dx = cam_x - last_cam_x
+	last_cam_x = cam_x
+
+	for child in city_layer.get_children():
+		match child.get_meta("layer", "front"):
+			"back":
+				child.position.x -= dx * (1.0 - back_speed)
+			"middle":
+				child.position.x -= dx * (1.0 - middle_speed)
 
 func get_height(x: float) -> float:
 	# Flat spawn zone
@@ -105,9 +128,63 @@ func generate_terrain():
 	$WinZone.global_position = Vector2(win_zone_x - 200, win_zone_y)
 
 	var rect := RectangleShape2D.new()
-	rect.size = Vector2(200, 4000)
+	rect.size = Vector2(400, 4000)
 	$WinZone/CollisionShape2D.shape = rect
 
 	$Polygon2D.texture = load("res://sprites/dirt.png")
 	$Polygon2D.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
 	$Polygon2D.texture_scale = Vector2(0.5, 0.5)
+
+	for child in $CityLayer.get_children():
+		child.queue_free()
+
+	var city_texture = load("res://sprites/terrenos100.png")
+
+	var back_rect   = Rect2(448, 7,   128, 57)
+	var middle_rect = Rect2(448, 76,  128, 52)
+	var front_rect  = Rect2(448, 133, 128, 59)
+
+	var tile_scale = 6.0  # one value, doubled
+	var tile_world_width = 128.0 * tile_scale
+
+	var x = city_start
+	while x < city_end:
+		var tile_center_x = x + tile_world_width / 2.0
+		var ground_y = get_height(x)
+
+		var back = Sprite2D.new()
+		back.set_meta("layer", "back")
+		back.texture = city_texture
+		back.region_enabled = true
+		back.region_rect = back_rect
+		back.scale = Vector2(tile_scale, tile_scale)
+		back.z_index = -4
+		back.modulate = Color(0.7, 0.7, 0.8, 1.0)
+		back.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		back.position = Vector2(tile_center_x, ground_y - (back_rect.size.y * tile_scale) / 2.0)
+		$CityLayer.add_child(back)
+
+		var middle = Sprite2D.new()
+		middle.set_meta("layer", "middle")
+		middle.texture = city_texture
+		middle.region_enabled = true
+		middle.region_rect = middle_rect
+		middle.scale = Vector2(tile_scale, tile_scale)
+		middle.z_index = -3
+		middle.modulate = Color(0.85, 0.85, 0.9, 1.0)
+		middle.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		middle.position = Vector2(tile_center_x, ground_y - (middle_rect.size.y * tile_scale) / 2.0)
+		$CityLayer.add_child(middle)
+
+		var front = Sprite2D.new()
+		front.set_meta("layer", "front")
+		front.texture = city_texture
+		front.region_enabled = true
+		front.region_rect = front_rect
+		front.scale = Vector2(tile_scale, tile_scale)
+		front.z_index = -2
+		front.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		front.position = Vector2(tile_center_x, ground_y - (front_rect.size.y * tile_scale) / 2.0)
+		$CityLayer.add_child(front)
+
+		x += tile_world_width

@@ -38,6 +38,8 @@ region = Rect2(329.57397, 330.79285, 43.10669, 41.322937)
 [node name="Node2D" type="Node2D" unique_id=1410308043 groups=["player"]]
 
 [node name="car" type="RigidBody2D" parent="." unique_id=1811045782 groups=["player"]]
+light_mask = 4
+visibility_layer = 4
 collision_layer = 3
 collision_mask = 3
 center_of_mass_mode = 1
@@ -45,6 +47,8 @@ center_of_mass = Vector2(15, 0)
 script = ExtResource("1_50v30")
 
 [node name="frontWheelPin" type="PinJoint2D" parent="car" unique_id=1654218986]
+light_mask = 2
+visibility_layer = 2
 z_index = -2
 position = Vector2(46, 35)
 node_a = NodePath("..")
@@ -58,6 +62,8 @@ mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_50v30")
 
 [node name="Sprite2D" type="Sprite2D" parent="car/frontWheelPin/frontWheel" unique_id=163323550]
+light_mask = 2
+visibility_layer = 2
 texture_filter = 1
 scale = Vector2(0.67, 0.67)
 texture = ExtResource("3_50v30")
@@ -70,6 +76,8 @@ shape = SubResource("CircleShape2D_3mrxu")
 target_position = Vector2(0, 30)
 
 [node name="backWheelPin" type="PinJoint2D" parent="car" unique_id=453226020]
+light_mask = 2
+visibility_layer = 2
 z_index = -2
 position = Vector2(-58, 35)
 node_a = NodePath("backWheel")
@@ -83,6 +91,8 @@ mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_50v30")
 
 [node name="Sprite2D" type="Sprite2D" parent="car/backWheelPin/backWheel" unique_id=489488407]
+light_mask = 2
+visibility_layer = 2
 texture_filter = 1
 scale = Vector2(0.67, 0.67)
 texture = ExtResource("3_50v30")
@@ -95,6 +105,8 @@ shape = SubResource("CircleShape2D_3mrxu")
 target_position = Vector2(0, 30)
 
 [node name="Sprite2D" type="Sprite2D" parent="car" unique_id=1670911067]
+light_mask = 8
+visibility_layer = 8
 texture_filter = 1
 texture = ExtResource("2_50v30")
 
@@ -117,6 +129,8 @@ visible = false
 position = Vector2(29, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="car/rocket" unique_id=1807540142]
+light_mask = 16
+visibility_layer = 16
 texture_filter = 1
 rotation = 1.5707964
 scale = Vector2(2, 2)
@@ -163,6 +177,8 @@ visible = false
 position = Vector2(29, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="car/stickyTires" unique_id=1009503495]
+light_mask = 16
+visibility_layer = 16
 texture_filter = 1
 scale = Vector2(0.8, 0.8)
 texture = SubResource("AtlasTexture_4clw4")
@@ -175,6 +191,8 @@ disabled = true
 position = Vector2(29, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="car/bouncyTires" unique_id=526905931]
+light_mask = 16
+visibility_layer = 16
 texture_filter = 1
 scale = Vector2(0.8, 0.8)
 texture = SubResource("AtlasTexture_jtldb")
