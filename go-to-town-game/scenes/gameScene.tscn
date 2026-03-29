@@ -25,22 +25,22 @@ position = Vector2(0, -2)
 position = Vector2(411, -60)
 
 [node name="Node2D" parent="." unique_id=876893026 instance=ExtResource("3_0smmp")]
-position = Vector2(340, -56)
+position = Vector2(356, -55)
 
 [node name="Node2D2" parent="." unique_id=1981726406 instance=ExtResource("3_0smmp")]
-position = Vector2(362, -56)
+position = Vector2(378, -55)
 
 [node name="Node2D3" parent="." unique_id=522574052 instance=ExtResource("3_0smmp")]
-position = Vector2(385, -56)
+position = Vector2(400, -55)
 
 [node name="Node2D4" parent="." unique_id=1431512447 instance=ExtResource("3_0smmp")]
-position = Vector2(409, -56)
+position = Vector2(421, -55)
 
 [node name="Node2D5" parent="." unique_id=1519297380 instance=ExtResource("4_4doxw")]
-position = Vector2(355, -76)
+position = Vector2(353, -76)
 
 [node name="Node2D6" parent="." unique_id=1070718116 instance=ExtResource("4_4doxw")]
-position = Vector2(411, -76)
+position = Vector2(403, -76)
 
 [node name="gameOver" type="CanvasLayer" parent="." unique_id=270687323]
 process_mode = 2
