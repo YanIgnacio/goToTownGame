@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dbnbdgsbptjvt"]
 
 [ext_resource type="Script" uid="uid://q62m6xfjds63" path="res://scripts/ui/mainMenu.gd" id="1_ph80j"]
+[ext_resource type="Texture2D" uid="uid://djkhqsl2gorr6" path="res://sprites/menuBackground.png" id="2_j3ryx"]
+[ext_resource type="Texture2D" uid="uid://hna1rt274i0b" path="res://sprites/menuTitle.png" id="3_c8enf"]
 
 [sub_resource type="FontFile" id="FontFile_f3uoa"]
 cache/0/variation_coordinates = {}
@@ -32,6 +34,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ph80j")
 
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1676301950]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="menuBackground" type="TextureRect" parent="MarginContainer" unique_id=2010559205]
+layout_mode = 2
+texture = ExtResource("2_j3ryx")
+
+[node name="menuTitle" type="TextureRect" parent="." unique_id=2085755251]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(578, 324)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_c8enf")
+
 [node name="Start" type="MarginContainer" parent="." unique_id=560312755]
 layout_mode = 1
 anchors_preset = -1
@@ -39,9 +65,9 @@ anchor_left = 0.035
 anchor_top = 0.509
 anchor_right = 0.035
 anchor_bottom = 0.509
-offset_left = -0.3199997
+offset_left = 0.6800003
 offset_top = -29.832
-offset_right = 319.68
+offset_right = 320.68
 offset_bottom = 30.168
 grow_vertical = 2
 
