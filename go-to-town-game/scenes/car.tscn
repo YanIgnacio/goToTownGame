@@ -8,7 +8,6 @@
 size = Vector2(637.5001, 53.333332)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_50v30"]
-absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mrxu"]
 radius = 9.333334
@@ -38,7 +37,6 @@ motor_enabled = true
 [node name="frontWheel" type="RigidBody2D" parent="car/frontWheelPin" unique_id=587297284]
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_50v30")
-gravity_scale = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="car/frontWheelPin/frontWheel" unique_id=163323550]
 scale = Vector2(0.06, 0.06)
@@ -62,7 +60,6 @@ motor_enabled = true
 [node name="backWheel" type="RigidBody2D" parent="car/backWheelPin" unique_id=267259955]
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_50v30")
-gravity_scale = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="car/backWheelPin/backWheel" unique_id=489488407]
 scale = Vector2(0.06, 0.06)
@@ -79,3 +76,9 @@ target_position = Vector2(0, 20)
 zoom = Vector2(2, 2)
 drag_horizontal_offset = 1.0
 drag_vertical_offset = -0.8
+
+[node name="Timer" type="Timer" parent="car" unique_id=832538064]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="car/Timer" to="car" method="_on_timer_timeout"]

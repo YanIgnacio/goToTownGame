@@ -13,4 +13,4 @@ position = Vector2(0, -2)
 position = Vector2(155, -185)
 
 [node name="Node2D2" parent="." unique_id=2057787156 instance=ExtResource("3_ijoxr")]
-position = Vector2(147, -99)
+position = Vector2(154, -129)
