@@ -11,22 +11,22 @@
 position = Vector2(0, -2)
 
 [node name="Carro" parent="." unique_id=1410308043 instance=ExtResource("2_ijoxr")]
-position = Vector2(345, -138)
+position = Vector2(334, -65)
 
 [node name="Node2D" parent="." unique_id=876893026 instance=ExtResource("3_0smmp")]
-position = Vector2(274, -134)
+position = Vector2(263, -61)
 
 [node name="Node2D2" parent="." unique_id=1981726406 instance=ExtResource("3_0smmp")]
-position = Vector2(296, -134)
+position = Vector2(285, -61)
 
 [node name="Node2D3" parent="." unique_id=522574052 instance=ExtResource("3_0smmp")]
-position = Vector2(319, -134)
+position = Vector2(308, -61)
 
 [node name="Node2D4" parent="." unique_id=1431512447 instance=ExtResource("3_0smmp")]
-position = Vector2(343, -134)
+position = Vector2(332, -61)
 
 [node name="Node2D5" parent="." unique_id=1519297380 instance=ExtResource("4_4doxw")]
-position = Vector2(285, -158)
+position = Vector2(274, -85)
 
 [node name="Node2D6" parent="." unique_id=1070718116 instance=ExtResource("4_4doxw")]
-position = Vector2(331, -158)
+position = Vector2(320, -85)
