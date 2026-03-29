@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://585s0kbbal3k" path="res://sfx/boingoing.mp3" id="7_ugdpj"]
 [ext_resource type="AudioStream" uid="uid://cyb61i4n7m7yw" path="res://sfx/sticky.mp3" id="8_hylxu"]
 [ext_resource type="AudioStream" uid="uid://1v22bu76j57r" path="res://sfx/tampasfx.mp3" id="9_6mia2"]
+[ext_resource type="AudioStream" uid="uid://caf4nd718y5h6" path="res://sfx/carenginestarting.mp3" id="10_gm33m"]
+[ext_resource type="AudioStream" uid="uid://c5bjbl0frjcbl" path="res://sfx/lose.mp3" id="11_ugdpj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_50v30"]
 
@@ -221,6 +223,13 @@ stream = ExtResource("8_hylxu")
 
 [node name="lidAudio" type="AudioStreamPlayer2D" parent="car" unique_id=507608985]
 stream = ExtResource("9_6mia2")
+
+[node name="carOn" type="AudioStreamPlayer2D" parent="car" unique_id=1057321240]
+stream = ExtResource("10_gm33m")
+
+[node name="loseAudio" type="AudioStreamPlayer2D" parent="car" unique_id=1758440080]
+process_mode = 3
+stream = ExtResource("11_ugdpj")
 
 [connection signal="timeout" from="car/timer" to="car" method="_on_timer_timeout"]
 [connection signal="timeout" from="car/boxTimer" to="car" method="_on_box_timer_timeout"]

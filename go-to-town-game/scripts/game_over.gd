@@ -15,7 +15,9 @@ func _on_button_pressed():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
-
+func playWin():
+	get_parent().get_node("winAudio").play()
+	
 func _on_button_2_pressed():
 	get_tree().paused = false
 	GameState.intro_played = true

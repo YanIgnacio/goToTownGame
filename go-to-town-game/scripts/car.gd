@@ -23,6 +23,10 @@ var truckLidActive = false
 @onready var lid = $truckLid
 @onready var boxArea = $Area2D
 @onready var gameOverScreen = get_parent().get_parent().get_node("gameOver")
+@onready var accelAudio = $aceleration
+
+func _ready():
+	$carOn.play()
 
 func _process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -30,7 +34,8 @@ func _process(delta):
 	clamp(speed, -20000, 20000)
 	
 	if direction:
-		$aceleration.play()
+		if not accelAudio.playing:
+			accelAudio.play()
 		speed += TORQUE * direction
 	else:
 		speed = 0
@@ -69,6 +74,12 @@ func is_on_floor(rigidBody):
 func activatePowerUp():
 	var chosen_powerup = randi_range(0, 3)
 	var powerup = powerup_array[chosen_powerup]
+	
+	if powerup == bouncyTires:
+		$bouncyAudio.play()
+	elif powerup == stickyTires:
+		$stickyAudio.play()
+		
 	powerup.call()
 	timer.start()
 	
@@ -76,7 +87,7 @@ func activatePowerUp():
 func stickyTires():
 	stickyTiresSprite.visible = true
 	stickyTiresActive = true
-	$stickyAudio.play()
+	
 	var downforce = $frontWheelPin/RayCast2D.target_position * 200
 	if not is_on_floor(frontWheel):
 		frontWheel.apply_central_force(downforce)
@@ -86,7 +97,7 @@ func stickyTires():
 func bouncyTires():
 	bouncyTiresSprite.visible = true
 	bouncyTiresActive = true
-	$bouncyAudio.play()
+	
 	var normalVector = Vector2.UP
 	var upforce = 0
 	
@@ -126,6 +137,6 @@ func get_carried_boxes():
 
 
 func _on_box_timer_timeout():
-	print('terminei')
 	if get_carried_boxes() <= 0:
+		$loseAudio.play()
 		gameOverScreen.gameFinished()

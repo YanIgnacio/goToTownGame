@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bp5thjnkncsx8" path="res://scenes/boxes/rectangleBox.tscn" id="4_4doxw"]
 [ext_resource type="Script" uid="uid://cbw4sjb46b6sb" path="res://scripts/game_over.gd" id="7_ldpgw"]
 [ext_resource type="AudioStream" uid="uid://b8yk5wyg0pk5l" path="res://sfx/forest-ambience-light-birdsong-distant-rooster-vincentmets-1-03-38.mp3" id="8_5rda0"]
-[ext_resource type="FontFile" uid="uid://d3k641i3awobg" path="res://fonts/Minecraft.ttf" id="8_5rda0"]
 [ext_resource type="Texture2D" uid="uid://uoybq4k2fqni" path="res://sprites/terrenos100.png" id="8_gi2u3"]
+[ext_resource type="AudioStream" uid="uid://ddxddjqqkpgv6" path="res://sfx/win.mp3" id="9_5rda0"]
+[ext_resource type="FontFile" uid="uid://d3k641i3awobg" path="res://fonts/Minecraft.ttf" id="9_u31e1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gi2u3"]
 atlas = ExtResource("8_gi2u3")
@@ -99,7 +100,7 @@ text = "Main Menu
 "
 
 [node name="gameWon" type="CanvasLayer" parent="." unique_id=185538503]
-process_mode = 2
+process_mode = 3
 script = ExtResource("7_ldpgw")
 
 [node name="Panel" type="Panel" parent="gameWon" unique_id=954941078]
@@ -178,14 +179,19 @@ shape = SubResource("RectangleShape2D_ldpgw")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1753383344]
 stream = ExtResource("8_5rda0")
 autoplay = true
+
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1266559791]
 offset_left = 251.0
 offset_top = -170.0
 offset_right = 521.0
 offset_bottom = -115.0
-theme_override_fonts/normal_font = ExtResource("8_5rda0")
+theme_override_fonts/normal_font = ExtResource("9_u31e1")
 text = "Press the ESCAPE Key
 if you get stuck!"
+
+[node name="winAudio" type="AudioStreamPlayer2D" parent="." unique_id=657734992]
+process_mode = 3
+stream = ExtResource("9_5rda0")
 
 [connection signal="pressed" from="gameOver/Button" to="gameOver" method="_on_button_pressed"]
 [connection signal="pressed" from="gameOver/Button2" to="gameOver" method="_on_button_2_pressed"]
