@@ -13,7 +13,8 @@ collision_mask = 6
 mass = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="squareBox" unique_id=1468858500]
-scale = Vector2(0.04, 0.04)
+position = Vector2(0, 9.536743e-07)
+scale = Vector2(0.015624999, 0.015624999)
 texture = ExtResource("1_ltshx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="squareBox" unique_id=1732143382]
