@@ -9,7 +9,7 @@ This is a small silly game submitted to Jerbob's SILLY JAM, which we took the th
 
 - [@YanIgnacio](https://github.com/YanIgnacio) (Coding)
 - [@andrewcoliveira](https://github.com/andrewcoliveira) (Coding)
-- Arthur (Art and SFX)
+- [@SleepyArthur](https://github.com/SleepyArthur) (Art and SFX)
 ## Demo
 
 https://sleeping-kitten.itch.io/going-to-town-with-my-veggies
